@@ -17,7 +17,7 @@ class InboxEmails extends Migration
             $table->bigIncrements('id');
             $table->string('to');
             $table->string('from');
-            $table->string('subject');
+            $table->longText('subject');
             $table->longText('body');
             $table->integer('email_uid')->nullable();
             $table->smallInteger('read')->nullable();
