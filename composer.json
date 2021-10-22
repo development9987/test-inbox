@@ -1,12 +1,12 @@
 {
-  "name": "xoshbin/laravel-inbox",
+  "name": "faisalazez/laravel-inbox",
   "description": "Receive and send emails from your project with Laravel",
   "type": "library",
   "license": "MIT",
   "authors": [
     {
-      "name": "Khoshbin Ali",
-      "email": "xoshbin@gmail.com"
+      "name": "Faisal Azez",
+      "email": "faisal.azez345@gmail.com"
     }
   ],
   "require": {
