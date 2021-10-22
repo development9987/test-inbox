@@ -94,6 +94,11 @@ return [
         'mailgun' => [
             'key' => env('MAILBOX_MAILGUN_KEY'),
         ],
+        'gmail' => [
+            'username' => env('GMAIL_USER_NAME'),
+            'password' => env('GMAIL_PASSWORD'),
+            'fetch' => env('GMAIL_FETCH'),
+        ],
 
     ]
 

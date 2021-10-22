@@ -28,10 +28,10 @@ class InboxController extends Controller
             exit();
         } else {
             /* IMAP Connection code with GMAIL IMAP */
-            $imap_conn = imap_open('{imap.gmail.com:993/imap/ssl}INBOX', 'tamsasu22@gmail.com', 'sss12345@@') or die('Cannot connect to Gmail: ' . imap_last_error());
+            $imap_conn = imap_open('{imap.gmail.com:993/imap/ssl}INBOX', config('inbox.services.gmail.username'), config('inbox.services.gmail.password')) or die('Cannot connect to Gmail: ' . imap_last_error());
             
             /* SET email subject filter criteria */
-            $inbox = imap_search($imap_conn, 'ALL');
+            $inbox = imap_search($imap_conn, config('inbox.services.gmail.fetch'));
             // $temp = imap_fetch_overview($imap_conn, $inbox[11], 0);
 
             if (! empty($inbox)) {
