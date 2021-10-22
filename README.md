@@ -40,11 +40,13 @@ php artisan vendor:publish --provider="Xoshbin\Inbox\InboxServiceProvider" --tag
 
 To connect your email provider with this package you have to follow [beyondcode/laravel-mailbox](https://docs.beyondco.de/laravel-mailbox) documentation.
 To use gmail your gmail account add this line to .env
+```bash
 GMAIL_USER_NAME=
 GMAIL_PASSWORD=
 #GMAIL_FETCH=ALL to get all emails
 #GMAIL_FETCH=RECENT to get all recent emails
 GMAIL_FETCH=ALL
+```
 
 ## Usage
 
