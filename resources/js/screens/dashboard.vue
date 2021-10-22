@@ -1,0 +1,135 @@
+<template>
+  <main class="inbox">
+    <div class="toolbar">
+      <div class="btn-group me-2 mb-2 mb-sm-0">
+        <a
+          href="#"
+          @click.prevent="bulkUnread"
+          type="button"
+          class="btn btn-purple-primary waves-light waves-effect"
+        >
+          <span class="fa fa-envelope"></span>
+        </a>
+        <a
+          href="#"
+          @click.prevent="bulkStar"
+          type="button"
+          class="btn btn-purple-primary waves-light waves-effect"
+          ><span class="action"><i class="fas fa-star"></i></span
+        ></a>
+        <a
+          type="button"
+          href="#"
+          @click.prevent="bulkBookmark"
+          class="btn btn-purple-primary waves-light waves-effect"
+        >
+          <span class="far fa-bookmark"></span>
+        </a>
+      </div>
+      <a
+        href="#"
+        @click.prevent="bulkDelete"
+        type="button"
+        class="btn btn-purple-primary waves-light waves-effect delete_all"
+      >
+        <span class="fas fa-trash"></span>
+      </a>
+      <div class="btn-group float-right">
+        <pagination :data="emails" @pagination-change-page="loadEmails"></pagination>
+      </div>
+    </div>
+
+    <ul class="message-list">
+      <li v-for="email in emails.data" :key="email.id" class="" v-bind:class="{ unread: !email.read }">
+        <div class="actions col-mail col-mail-1">
+          <div class="checkbox-wrapper-mail">
+          <input
+            type="checkbox"
+            class="action sub_chk"
+            :id="email.id"
+            :value="email.id"
+            v-model="checkedEmails"
+          />
+          <label for="chk19" class="toggle"></label>
+          </div>
+          <a href="#" @click.prevent="starEmail(email.id)">
+              <span class="action" key="fas" v-if="email.starred"><i class="fas fa-star"></i></span>
+              <span class="action" key="far" v-else><i class="far fa-star"></i></span>
+            </a>
+            <router-link :to="{ name: 'show', params: { id: email.id } }">
+            <span class="from">{{ email.from.substring(0,8)+".." }}</span>
+            </router-link>
+        </div>
+        <div class="actions col-mail col-mail-2">
+        <router-link :to="{ name: 'show', params: { id: email.id } }">
+          <div class="header">
+            <span class="title">{{ email.subject.substring(0,20)+".." }}</span>
+            <span class="date">
+              <span class=""></span> {{ email.date }}</span
+            >
+          </div>
+          <!-- <div class="title">
+            {{ email.subject.substring(0,8)+".." }}
+          </div> -->
+          <!-- <div class="description">
+            {{ email.html | striphtml }}
+          </div> -->
+        </router-link>
+        </div>
+      </li>
+    </ul>
+  </main>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      checkedEmails: [],
+      emails: {}
+    };
+  },
+  methods: {
+    loadEmails(page = 1) {
+			axios.get(Inbox.basePath + "/api/emails?page=" + page)
+				.then(({ data }) => (this.emails = data));
+    },
+    starEmail(id) {
+      axios.get(Inbox.basePath + "/api/star/" + id).then(() => {
+        this.loadEmails();
+      });
+    },
+    bulkStar() {
+      axios
+        .post(Inbox.basePath + "/api/bulkstar", { ids: this.checkedEmails })
+        .then(this.loadEmails());
+    },
+    bulkBookmark() {
+      axios
+        .post(Inbox.basePath + "/api/bulkbookmark", { ids: this.checkedEmails })
+        .then(this.loadEmails());
+    },
+    bulkDelete() {
+      axios
+        .post(Inbox.basePath + "/api/bulkdelete", { ids: this.checkedEmails })
+        .then(this.loadEmails());
+    },
+    bulkUnread() {
+      axios
+        .post(Inbox.basePath + "/api/bulkunread", { ids: this.checkedEmails })
+        .then(this.loadEmails());
+    }
+  },
+  filters: {
+    striphtml(value) {
+      var div = document.createElement("div");
+      div.innerHTML = value;
+      var text = div.textContent || div.innerText || "";
+      return text;
+    }
+  },
+  mounted() {
+    this.loadEmails();
+  }
+};
+</script>
