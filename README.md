@@ -61,11 +61,21 @@ includes this scripts and css file in you blade. <br>
     <link rel="stylesheet" href="sweetalert2.min.css">
     <!-- js scripts -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="{{asset(mix('app.js', 'vendor/inbox'))}}"></script>
-    
+    <script src="{{asset(mix('app.js', 'vendor/inbox'))}}"></script>    
 ```
 Now add the below code in the blade area in which you want to show your inbox.
-
+```bash
+    <div class="row" id="app">
+        <div class="col-12">
+            @include('inbox::includes.nav')
+            <div class="email-rightbar mb-3">
+                <div class="card">
+                    <router-view></router-view>
+                </div>
+            </div>
+        </div>
+    </div>
+```
 
 ### TO-DO
 - [x] Changing views to vue components.
