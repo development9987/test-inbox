@@ -51,7 +51,20 @@ GMAIL_FETCH=ALL
 ## Usage
 
 After connecting your email provider you can visit the inbox interface from url **/inbox/dashboard** like that: <br>
-**example.com/inbox/dashboard**
+**example.com/inbox/dashboard** <br>
+You can also add the inbox feature to your own blades. <br>
+includes this scripts and css file in you blade. <br>
+```bash
+    <!-- css scripts -->
+    <link href="{{asset(mix('app.css', 'vendor/inbox'))}}" rel="stylesheet">
+    <link href="{{asset(mix('all.css', 'vendor/inbox'))}}" rel="stylesheet">
+    <link rel="stylesheet" href="sweetalert2.min.css">
+    <!-- js scripts -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{asset(mix('app.js', 'vendor/inbox'))}}"></script>
+    
+```
+Now add the below code in the blade area in which you want to show your inbox.
 
 
 ### TO-DO
