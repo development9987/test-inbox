@@ -123,7 +123,7 @@ export default {
   methods: {
     loadUsers() {
       axios
-        .get(Inbox.basePath + "/api/allusers/")
+        .get("/inbox/api/allusers/")
         .then(({ data }) => {
             // alert(data.data);
             console.log(data.data);
@@ -131,22 +131,22 @@ export default {
         });
     },
     starEmail(id) {
-      axios.get(Inbox.basePath + "/api/star/" + this.id).then(() => {
+      axios.get("/inbox/api/star/" + this.id).then(() => {
         this.loadEmail(this.id);
       });
     },
     bookmarkEmail(id) {
-      axios.get(Inbox.basePath + "/api/bookmark/" + this.id).then(() => {
+      axios.get("/inbox/api/bookmark/" + this.id).then(() => {
         this.loadEmail(this.id);
       });
     },
     unreadEmail(id) {
-      axios.get(Inbox.basePath + "/api/unread/" + this.id).then(() => {
+      axios.get("/inbox/api/unread/" + this.id).then(() => {
         this.loadEmail(this.id);
       });
     },
     deleteEmail(id) {
-      axios.get(Inbox.basePath + "/api/delete/" + this.id).then(() => {
+      axios.get("/inbox/api/delete/" + this.id).then(() => {
         this.$router.push("/dashboard");
       });
     },

@@ -1,89 +1,24 @@
 <template>
-  <div>
-    <router-link to="/mail-content-add"  class="col-2 btn btn-purple-primary btn-block" style="float: right;">Add</router-link>
-    <table
-      id="datatable-buttons"
-      class="
-        table table-bordered
-        align-middle
-        dt-responsive
-        nowrap
-        dataTable
-        no-footer
-        dtr-inline
-      "
-      style="border-collapse: collapse; border-spacing: 0px; width: 100%"
-      role="grid"
-    >
-      <!-- <thead>
-        <tr role="row">
-          <th
-            class="sorting"
-            tabindex="0"
-            aria-controls="datatable-buttons"
-            rowspan="1"
-            colspan="1"
-            style="width: 47px"
-            aria-label="Name: activate to sort column ascending"
-          >
-            Name 2
-          </th>
-          <th
-            class="sorting"
-            tabindex="0"
-            aria-controls="datatable-buttons"
-            rowspan="1"
-            colspan="1"
-            style="width: 70px"
-            aria-label="Number: activate to sort column ascending"
-          >
-            Number
-          </th>
-          <th
-            class="sorting"
-            tabindex="0"
-            aria-controls="datatable-buttons"
-            rowspan="1"
-            colspan="1"
-            style="width: 33px"
-            aria-label="City: activate to sort column ascending"
-          >
-            City
-          </th>
-          <th
-            class="sorting"
-            tabindex="0"
-            aria-controls="datatable-buttons"
-            rowspan="1"
-            colspan="1"
-            style="width: 49px"
-            aria-label="Group: activate to sort column ascending"
-          >
-            Group
-          </th>
-          <th
-            class="sorting"
-            tabindex="0"
-            aria-controls="datatable-buttons"
-            rowspan="1"
-            colspan="1"
-            style="width: 99px"
-            aria-label="Email: activate to sort column ascending"
-          >
-            Email
-          </th>
-        </tr>
-      </thead> -->
-      <tbody>
-        <tr role="row" class="odd" v-for="(template, index) in templates" :key="template.id">
-          <td>{{ template.subject }}</td>
-          <td>{{ template.body }}</td>
-          <td><router-link :to="{ name: 'compose-auto', params: { template: templates[index] } }"  class="btn btn-purple-primary btn-block">Use</router-link></td>
-          <td><router-link :to="{ name: 'mailcontentedit', params: { id: template.id } }"  class="btn btn-purple-primary btn-block">Edit</router-link></td>
-          <td><a href="#" @click="deleteTemplate(template.id)">Delete</a></td>
-        </tr>
-      </tbody>
-    </table>
+  <div style="padding: 10px;">
+    <div>
+      <h2 style="display:inline;">Mail Content</h2>
+      <router-link to="/mail-content-add"  class="col-2 btn btn-purple-primary btn-block" style="float: right; padding: 1px">Add</router-link>
+    </div>
+    <div style="padding: 12px; border-bottom: 1px solid #c4c4c4;" v-for="(template, index) in templates" :key="template.id">
+      <div style="color:#5B626B;"><strong>{{ template.subject }}</strong></div>
+      <div>{{ 
+        template.body.length > 250 ?
+        template.body.substring(0, 250 - 3) + "..." :
+        template.body
+       }}
+
+      </div>
+      <div style="display: flex; justify-content: end;">
+        <router-link :to="{ name: 'compose-auto', params: { template: templates[index] } }" style="width:16%; padding:1px 1px; margin-top: 8px; margin-left: 5px;"  class="btn btn-gray-primary btn-block">Use</router-link>
+        <router-link :to="{ name: 'mailcontentedit', params: { id: template.id } }" style="width:16%; padding:1px 1px; margin-left: 5px;"  class="btn btn-gray-primary btn-block">Edit</router-link>
+        <a href="#" style="width:16%; padding:1px 1px; margin-left: 5px;" class="btn btn-gray-primary btn-block router-link-active" @click="deleteTemplate(template.id)">Delete</a>
+      </div>
+    </div>  
   </div>
 </template>
 
@@ -101,7 +36,7 @@ export default {
   methods: {
     loadUsers() {
       axios
-        .get(Inbox.basePath + "/api/allmailscontent/")
+        .get("/inbox/api/allmailscontent/")
         .then(({ data }) => {
             // alert('in mailcontent');
             console.log(data.data);
@@ -111,7 +46,7 @@ export default {
     deleteTemplate(id) {
         // alert('in deleteTemplate');
       // Submit the form via a POST request
-      axios.get(Inbox.basePath + "/api/deleteMailContent/"+id).then(({ data }) => {
+      axios.get("/inbox/api/deleteMailContent/"+id).then(({ data }) => {
         console.log(data);
         if(data.status){
           Swal.fire({
@@ -128,7 +63,7 @@ export default {
           confirmButtonText: 'OK'
           })
           this.loadUsers();
-          alert('Sent!');
+          alert('are you sure!');
         }
       });
     },

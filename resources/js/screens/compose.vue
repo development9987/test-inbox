@@ -104,7 +104,7 @@ export default {
   methods: {
     sendEmail() {
       // Submit the form via a POST request
-      this.form.post(Inbox.basePath + "/api/send").then(({ data }) => {
+      this.form.post("/inbox/api/send").then(({ data }) => {
         console.log(data);
         if(data.status){
           Swal.fire({

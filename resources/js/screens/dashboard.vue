@@ -91,7 +91,7 @@ export default {
   },
   methods: {
     loadEmails(page = 1) {
-			axios.get(Inbox.basePath + "/api/emails?page=" + page)
+			axios.get("/inbox/api/emails?page=" + page)
 				.then(({ data }) => (this.emails = data));
     },
     starEmail(id) {
@@ -101,22 +101,22 @@ export default {
     },
     bulkStar() {
       axios
-        .post(Inbox.basePath + "/api/bulkstar", { ids: this.checkedEmails })
+        .post("/inbox/api/bulkstar", { ids: this.checkedEmails })
         .then(this.loadEmails());
     },
     bulkBookmark() {
       axios
-        .post(Inbox.basePath + "/api/bulkbookmark", { ids: this.checkedEmails })
+        .post("/inbox/api/bulkbookmark", { ids: this.checkedEmails })
         .then(this.loadEmails());
     },
     bulkDelete() {
       axios
-        .post(Inbox.basePath + "/api/bulkdelete", { ids: this.checkedEmails })
+        .post("/inbox/api/bulkdelete", { ids: this.checkedEmails })
         .then(this.loadEmails());
     },
     bulkUnread() {
       axios
-        .post(Inbox.basePath + "/api/bulkunread", { ids: this.checkedEmails })
+        .post("/inbox/api/bulkunread", { ids: this.checkedEmails })
         .then(this.loadEmails());
     }
   },

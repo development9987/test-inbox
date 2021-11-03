@@ -1,8 +1,9 @@
 <template>
-  <div>
+  <div style="padding:10px;">
     <router-link
       to="/mail-content"
       class="btn btn-purple-primary btn-block"
+      style="width:18%; margin: 15px; float: right;"
       >Back</router-link
     >
     <form @submit.prevent="editTemplate" @keydown="form.onKeydown($event)">
@@ -67,7 +68,7 @@ export default {
   methods: {
     loadTemplate(id) {
       // Submit the form via a POST request
-      axios.get(Inbox.basePath + "/api/editMailContent/" + id).then(({ data }) => {
+      axios.get("/inbox/api/editMailContent/" + id).then(({ data }) => {
         console.log(data);
         this.form.subject = data.data.subject;  
         this.form.html = data.data.body;  
@@ -76,7 +77,7 @@ export default {
     },
     editTemplate() {
       // Submit the form via a POST request
-      this.form.post(Inbox.basePath + "/api/allmailscontent").then(({ data }) => {
+      this.form.post("/inbox/api/allmailscontent").then(({ data }) => {
         console.log(data);
         if(data.status){
           Swal.fire({
@@ -98,7 +99,7 @@ export default {
     },
     deleteTemplate() {
       // Submit the form via a POST request
-      this.form.post(Inbox.basePath + "/api/allmailscontent").then(({ data }) => {
+      this.form.post("/inbox/api/allmailscontent").then(({ data }) => {
         console.log(data);
         if(data.status){
           Swal.fire({

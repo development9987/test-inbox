@@ -6692,7 +6692,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       // Submit the form via a POST request
-      this.form.post(Inbox.basePath + "/api/send").then(function (_ref) {
+      this.form.post("/inbox/api/send").then(function (_ref) {
         var data = _ref.data;
         console.log(data);
 
@@ -6853,7 +6853,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       // Submit the form via a POST request
-      this.form.post(Inbox.basePath + "/api/send").then(function (_ref) {
+      this.form.post("/inbox/api/send").then(function (_ref) {
         var data = _ref.data;
         console.log(data);
 
@@ -6989,7 +6989,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-      axios.get(Inbox.basePath + "/api/emails?page=" + page).then(function (_ref) {
+      axios.get("/inbox/api/emails?page=" + page).then(function (_ref) {
         var data = _ref.data;
         return _this.emails = data;
       });
@@ -7002,22 +7002,22 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     bulkStar: function bulkStar() {
-      axios.post(Inbox.basePath + "/api/bulkstar", {
+      axios.post("/inbox/api/bulkstar", {
         ids: this.checkedEmails
       }).then(this.loadEmails());
     },
     bulkBookmark: function bulkBookmark() {
-      axios.post(Inbox.basePath + "/api/bulkbookmark", {
+      axios.post("/inbox/api/bulkbookmark", {
         ids: this.checkedEmails
       }).then(this.loadEmails());
     },
     bulkDelete: function bulkDelete() {
-      axios.post(Inbox.basePath + "/api/bulkdelete", {
+      axios.post("/inbox/api/bulkdelete", {
         ids: this.checkedEmails
       }).then(this.loadEmails());
     },
     bulkUnread: function bulkUnread() {
-      axios.post(Inbox.basePath + "/api/bulkunread", {
+      axios.post("/inbox/api/bulkunread", {
         ids: this.checkedEmails
       }).then(this.loadEmails());
     }
@@ -7126,7 +7126,7 @@ __webpack_require__.r(__webpack_exports__);
     loadForward: function loadForward(id) {
       var _this = this;
 
-      axios.get(Inbox.basePath + "/api/forward/" + id).then(function (_ref) {
+      axios.get("/inbox/api/forward/" + id).then(function (_ref) {
         var data = _ref.data;
         return _this.fillForm(data.show);
       });
@@ -7135,7 +7135,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       // Submit the form via a POST request
-      this.form.post(Inbox.basePath + "/api/sendforward").then(function (_ref2) {
+      this.form.post("/inbox/api/sendforward").then(function (_ref2) {
         var data = _ref2.data;
         console.log(data);
 
@@ -7321,7 +7321,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-      axios.get(Inbox.basePath + "/api/important?page=" + page).then(function (_ref) {
+      axios.get("/inbox/api/important?page=" + page).then(function (_ref) {
         var data = _ref.data;
         return _this.emails = data;
       });
@@ -7329,27 +7329,27 @@ __webpack_require__.r(__webpack_exports__);
     starEmail: function starEmail(id) {
       var _this2 = this;
 
-      axios.get(Inbox.basePath + "/api/star/" + id).then(function () {
+      axios.get("/inbox/api/star/" + id).then(function () {
         _this2.loadEmails();
       });
     },
     bulkStar: function bulkStar() {
-      axios.post(Inbox.basePath + "/api/bulkstar", {
+      axios.post("/inbox/api/bulkstar", {
         ids: this.checkedEmails
       }).then(this.loadEmails());
     },
     bulkBookmark: function bulkBookmark() {
-      axios.post(Inbox.basePath + "/api/bulkbookmark", {
+      axios.post("/inbox/api/bulkbookmark", {
         ids: this.checkedEmails
       }).then(this.loadEmails());
     },
     bulkDelete: function bulkDelete() {
-      axios.post(Inbox.basePath + "/api/bulkdelete", {
+      axios.post("/inbox/api/bulkdelete", {
         ids: this.checkedEmails
       }).then(this.loadEmails());
     },
     bulkUnread: function bulkUnread() {
-      axios.post(Inbox.basePath + "/api/bulkunread", {
+      axios.post("/inbox/api/bulkunread", {
         ids: this.checkedEmails
       }).then(this.loadEmails());
     }
@@ -7427,6 +7427,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -7448,7 +7449,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     addTemplate: function addTemplate() {
       // Submit the form via a POST request
-      this.form.post(Inbox.basePath + "/api/allmailscontent").then(function (_ref) {
+      this.form.post("/inbox/api/allmailscontent").then(function (_ref) {
         var data = _ref.data;
         console.log(data);
 
@@ -7471,7 +7472,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     deleteTemplate: function deleteTemplate() {
       // Submit the form via a POST request
-      this.form.post(Inbox.basePath + "/api/allmailscontent").then(function (_ref2) {
+      this.form.post("/inbox/api/allmailscontent").then(function (_ref2) {
         var data = _ref2.data;
         console.log(data);
 
@@ -7567,6 +7568,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -7590,7 +7592,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       // Submit the form via a POST request
-      axios.get(Inbox.basePath + "/api/editMailContent/" + id).then(function (_ref) {
+      axios.get("/inbox/api/editMailContent/" + id).then(function (_ref) {
         var data = _ref.data;
         console.log(data);
         _this.form.subject = data.data.subject;
@@ -7600,7 +7602,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     editTemplate: function editTemplate() {
       // Submit the form via a POST request
-      this.form.post(Inbox.basePath + "/api/allmailscontent").then(function (_ref2) {
+      this.form.post("/inbox/api/allmailscontent").then(function (_ref2) {
         var data = _ref2.data;
         console.log(data);
 
@@ -7623,7 +7625,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     deleteTemplate: function deleteTemplate() {
       // Submit the form via a POST request
-      this.form.post(Inbox.basePath + "/api/allmailscontent").then(function (_ref3) {
+      this.form.post("/inbox/api/allmailscontent").then(function (_ref3) {
         var data = _ref3.data;
         console.log(data);
 
@@ -7695,71 +7697,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -7774,7 +7711,7 @@ __webpack_require__.r(__webpack_exports__);
     loadUsers: function loadUsers() {
       var _this = this;
 
-      axios.get(Inbox.basePath + "/api/allmailscontent/").then(function (_ref) {
+      axios.get("/inbox/api/allmailscontent/").then(function (_ref) {
         var data = _ref.data;
         // alert('in mailcontent');
         console.log(data.data);
@@ -7786,7 +7723,7 @@ __webpack_require__.r(__webpack_exports__);
 
       // alert('in deleteTemplate');
       // Submit the form via a POST request
-      axios.get(Inbox.basePath + "/api/deleteMailContent/" + id).then(function (_ref2) {
+      axios.get("/inbox/api/deleteMailContent/" + id).then(function (_ref2) {
         var data = _ref2.data;
         console.log(data);
 
@@ -7807,7 +7744,7 @@ __webpack_require__.r(__webpack_exports__);
 
           _this2.loadUsers();
 
-          alert('Sent!');
+          alert('are you sure!');
         }
       });
     }
@@ -8120,7 +8057,7 @@ __webpack_require__.r(__webpack_exports__);
     loadUsers: function loadUsers() {
       var _this = this;
 
-      axios.get(Inbox.basePath + "/api/allusers/").then(function (_ref) {
+      axios.get("/inbox/api/allusers/").then(function (_ref) {
         var data = _ref.data;
         // alert(data.data);
         console.log(data.data);
@@ -8130,28 +8067,28 @@ __webpack_require__.r(__webpack_exports__);
     starEmail: function starEmail(id) {
       var _this2 = this;
 
-      axios.get(Inbox.basePath + "/api/star/" + this.id).then(function () {
+      axios.get("/inbox/api/star/" + this.id).then(function () {
         _this2.loadEmail(_this2.id);
       });
     },
     bookmarkEmail: function bookmarkEmail(id) {
       var _this3 = this;
 
-      axios.get(Inbox.basePath + "/api/bookmark/" + this.id).then(function () {
+      axios.get("/inbox/api/bookmark/" + this.id).then(function () {
         _this3.loadEmail(_this3.id);
       });
     },
     unreadEmail: function unreadEmail(id) {
       var _this4 = this;
 
-      axios.get(Inbox.basePath + "/api/unread/" + this.id).then(function () {
+      axios.get("/inbox/api/unread/" + this.id).then(function () {
         _this4.loadEmail(_this4.id);
       });
     },
     deleteEmail: function deleteEmail(id) {
       var _this5 = this;
 
-      axios.get(Inbox.basePath + "/api/delete/" + this.id).then(function () {
+      axios.get("/inbox/api/delete/" + this.id).then(function () {
         _this5.$router.push("/dashboard");
       });
     },
@@ -8327,7 +8264,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-      axios.get(Inbox.basePath + "/api/sent?page=" + page).then(function (_ref) {
+      axios.get("/inbox/api/sent?page=" + page).then(function (_ref) {
         var data = _ref.data;
         return _this.emails = data;
       });
@@ -8335,27 +8272,27 @@ __webpack_require__.r(__webpack_exports__);
     starEmail: function starEmail(id) {
       var _this2 = this;
 
-      axios.get(Inbox.basePath + "/api/star/" + id).then(function () {
+      axios.get("/inbox/api/star/" + id).then(function () {
         _this2.loadEmails();
       });
     },
     bulkStar: function bulkStar() {
-      axios.post(Inbox.basePath + "/api/bulkstar", {
+      axios.post("/inbox/api/bulkstar", {
         ids: this.checkedEmails
       }).then(this.loadEmails());
     },
     bulkBookmark: function bulkBookmark() {
-      axios.post(Inbox.basePath + "/api/bulkbookmark", {
+      axios.post("/inbox/api/bulkbookmark", {
         ids: this.checkedEmails
       }).then(this.loadEmails());
     },
     bulkDelete: function bulkDelete() {
-      axios.post(Inbox.basePath + "/api/bulkdelete", {
+      axios.post("/inbox/api/bulkdelete", {
         ids: this.checkedEmails
       }).then(this.loadEmails());
     },
     bulkUnread: function bulkUnread() {
-      axios.post(Inbox.basePath + "/api/bulkunread", {
+      axios.post("/inbox/api/bulkunread", {
         ids: this.checkedEmails
       }).then(this.loadEmails());
     }
@@ -8623,7 +8560,7 @@ __webpack_require__.r(__webpack_exports__);
     loadEmail: function loadEmail(id) {
       var _this = this;
 
-      axios.get(Inbox.basePath + "/api/show/" + this.id).then(function (_ref) {
+      axios.get("/inbox/api/show/" + this.id).then(function (_ref) {
         var data = _ref.data;
         _this.email = data.show;
         _this.email_replies = data.replies;
@@ -8632,28 +8569,28 @@ __webpack_require__.r(__webpack_exports__);
     starEmail: function starEmail(id) {
       var _this2 = this;
 
-      axios.get(Inbox.basePath + "/api/star/" + this.id).then(function () {
+      axios.get("/inbox/api/star/" + this.id).then(function () {
         _this2.loadEmail(_this2.id);
       });
     },
     bookmarkEmail: function bookmarkEmail(id) {
       var _this3 = this;
 
-      axios.get(Inbox.basePath + "/api/bookmark/" + this.id).then(function () {
+      axios.get("/inbox/api/bookmark/" + this.id).then(function () {
         _this3.loadEmail(_this3.id);
       });
     },
     unreadEmail: function unreadEmail(id) {
       var _this4 = this;
 
-      axios.get(Inbox.basePath + "/api/unread/" + this.id).then(function () {
+      axios.get("/inbox/api/unread/" + this.id).then(function () {
         _this4.loadEmail(_this4.id);
       });
     },
     deleteEmail: function deleteEmail(id) {
       var _this5 = this;
 
-      axios.get(Inbox.basePath + "/api/delete/" + this.id).then(function () {
+      axios.get("/inbox/api/delete/" + this.id).then(function () {
         _this5.$router.push("/dashboard");
       });
     }
@@ -8805,7 +8742,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-      axios.get(Inbox.basePath + "/api/starred?page=" + page).then(function (_ref) {
+      axios.get("/inbox/api/starred?page=" + page).then(function (_ref) {
         var data = _ref.data;
         return _this.emails = data;
       });
@@ -8813,27 +8750,27 @@ __webpack_require__.r(__webpack_exports__);
     starEmail: function starEmail(id) {
       var _this2 = this;
 
-      axios.get(Inbox.basePath + "/api/star/" + id).then(function () {
+      axios.get("/inbox/api/star/" + id).then(function () {
         _this2.loadEmails();
       });
     },
     bulkStar: function bulkStar() {
-      axios.post(Inbox.basePath + "/api/bulkstar", {
+      axios.post("/inbox/api/bulkstar", {
         ids: this.checkedEmails
       }).then(this.loadEmails());
     },
     bulkBookmark: function bulkBookmark() {
-      axios.post(Inbox.basePath + "/api/bulkbookmark", {
+      axios.post("/inbox/api/bulkbookmark", {
         ids: this.checkedEmails
       }).then(this.loadEmails());
     },
     bulkDelete: function bulkDelete() {
-      axios.post(Inbox.basePath + "/api/bulkdelete", {
+      axios.post("/inbox/api/bulkdelete", {
         ids: this.checkedEmails
       }).then(this.loadEmails());
     },
     bulkUnread: function bulkUnread() {
-      axios.post(Inbox.basePath + "/api/bulkunread", {
+      axios.post("/inbox/api/bulkunread", {
         ids: this.checkedEmails
       }).then(this.loadEmails());
     }
@@ -8990,7 +8927,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-      axios.get(Inbox.basePath + "/api/trash?page=" + page).then(function (_ref) {
+      axios.get("/inbox/api/trash?page=" + page).then(function (_ref) {
         var data = _ref.data;
         return _this.emails = data;
       });
@@ -8998,27 +8935,27 @@ __webpack_require__.r(__webpack_exports__);
     starEmail: function starEmail(id) {
       var _this2 = this;
 
-      axios.get(Inbox.basePath + "/api/star/" + id).then(function () {
+      axios.get("/inbox/api/star/" + id).then(function () {
         _this2.loadEmails();
       });
     },
     bulkStar: function bulkStar() {
-      axios.post(Inbox.basePath + "/api/bulkstar", {
+      axios.post("/inbox/api/bulkstar", {
         ids: this.checkedEmails
       }).then(this.loadEmails());
     },
     bulkBookmark: function bulkBookmark() {
-      axios.post(Inbox.basePath + "/api/bulkbookmark", {
+      axios.post("/inbox/api/bulkbookmark", {
         ids: this.checkedEmails
       }).then(this.loadEmails());
     },
     bulkDelete: function bulkDelete() {
-      axios.post(Inbox.basePath + "/api/bulkdelete", {
+      axios.post("/inbox/api/bulkdelete", {
         ids: this.checkedEmails
       }).then(this.loadEmails());
     },
     bulkUnread: function bulkUnread() {
-      axios.post(Inbox.basePath + "/api/bulkunread", {
+      axios.post("/inbox/api/bulkunread", {
         ids: this.checkedEmails
       }).then(this.loadEmails());
     }
@@ -48087,11 +48024,13 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    { staticStyle: { padding: "10px" } },
     [
       _c(
         "router-link",
         {
           staticClass: "btn btn-purple-primary btn-block",
+          staticStyle: { width: "18%", margin: "15px", float: "right" },
           attrs: { to: "/mail-content" }
         },
         [_vm._v("Back")]
@@ -48225,11 +48164,13 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    { staticStyle: { padding: "10px" } },
     [
       _c(
         "router-link",
         {
           staticClass: "btn btn-purple-primary btn-block",
+          staticStyle: { width: "18%", margin: "15px", float: "right" },
           attrs: { to: "/mail-content" }
         },
         [_vm._v("Back")]
@@ -48363,108 +48304,123 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    { staticStyle: { padding: "10px" } },
     [
       _c(
-        "router-link",
-        {
-          staticClass: "col-2 btn btn-purple-primary btn-block",
-          staticStyle: { float: "right" },
-          attrs: { to: "/mail-content-add" }
-        },
-        [_vm._v("Add")]
+        "div",
+        [
+          _c("h2", { staticStyle: { display: "inline" } }, [
+            _vm._v("Mail Content")
+          ]),
+          _vm._v(" "),
+          _c(
+            "router-link",
+            {
+              staticClass: "col-2 btn btn-purple-primary btn-block",
+              staticStyle: { float: "right", padding: "1px" },
+              attrs: { to: "/mail-content-add" }
+            },
+            [_vm._v("Add")]
+          )
+        ],
+        1
       ),
       _vm._v(" "),
-      _c(
-        "table",
-        {
-          staticClass:
-            "\n      table table-bordered\n      align-middle\n      dt-responsive\n      nowrap\n      dataTable\n      no-footer\n      dtr-inline\n    ",
-          staticStyle: {
-            "border-collapse": "collapse",
-            "border-spacing": "0px",
-            width: "100%"
+      _vm._l(_vm.templates, function(template, index) {
+        return _c(
+          "div",
+          {
+            key: template.id,
+            staticStyle: {
+              padding: "12px",
+              "border-bottom": "1px solid #c4c4c4"
+            }
           },
-          attrs: { id: "datatable-buttons", role: "grid" }
-        },
-        [
-          _c(
-            "tbody",
-            _vm._l(_vm.templates, function(template, index) {
-              return _c(
-                "tr",
-                {
-                  key: template.id,
-                  staticClass: "odd",
-                  attrs: { role: "row" }
-                },
-                [
-                  _c("td", [_vm._v(_vm._s(template.subject))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(template.body))]),
-                  _vm._v(" "),
-                  _c(
-                    "td",
-                    [
-                      _c(
-                        "router-link",
-                        {
-                          staticClass: "btn btn-purple-primary btn-block",
-                          attrs: {
-                            to: {
-                              name: "compose-auto",
-                              params: { template: _vm.templates[index] }
-                            }
-                          }
-                        },
-                        [_vm._v("Use")]
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "td",
-                    [
-                      _c(
-                        "router-link",
-                        {
-                          staticClass: "btn btn-purple-primary btn-block",
-                          attrs: {
-                            to: {
-                              name: "mailcontentedit",
-                              params: { id: template.id }
-                            }
-                          }
-                        },
-                        [_vm._v("Edit")]
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c("td", [
-                    _c(
-                      "a",
-                      {
-                        attrs: { href: "#" },
-                        on: {
-                          click: function($event) {
-                            return _vm.deleteTemplate(template.id)
-                          }
-                        }
-                      },
-                      [_vm._v("Delete")]
-                    )
-                  ])
-                ]
+          [
+            _c("div", { staticStyle: { color: "#5B626B" } }, [
+              _c("strong", [_vm._v(_vm._s(template.subject))])
+            ]),
+            _vm._v(" "),
+            _c("div", [
+              _vm._v(
+                _vm._s(
+                  template.body.length > 250
+                    ? template.body.substring(0, 250 - 3) + "..."
+                    : template.body
+                ) + "\n\n    "
               )
-            }),
-            0
-          )
-        ]
-      )
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticStyle: { display: "flex", "justify-content": "end" } },
+              [
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "btn btn-gray-primary btn-block",
+                    staticStyle: {
+                      width: "16%",
+                      padding: "1px 1px",
+                      "margin-top": "8px",
+                      "margin-left": "5px"
+                    },
+                    attrs: {
+                      to: {
+                        name: "compose-auto",
+                        params: { template: _vm.templates[index] }
+                      }
+                    }
+                  },
+                  [_vm._v("Use")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "btn btn-gray-primary btn-block",
+                    staticStyle: {
+                      width: "16%",
+                      padding: "1px 1px",
+                      "margin-left": "5px"
+                    },
+                    attrs: {
+                      to: {
+                        name: "mailcontentedit",
+                        params: { id: template.id }
+                      }
+                    }
+                  },
+                  [_vm._v("Edit")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass:
+                      "btn btn-gray-primary btn-block router-link-active",
+                    staticStyle: {
+                      width: "16%",
+                      padding: "1px 1px",
+                      "margin-left": "5px"
+                    },
+                    attrs: { href: "#" },
+                    on: {
+                      click: function($event) {
+                        return _vm.deleteTemplate(template.id)
+                      }
+                    }
+                  },
+                  [_vm._v("Delete")]
+                )
+              ],
+              1
+            )
+          ]
+        )
+      })
     ],
-    1
+    2
   )
 }
 var staticRenderFns = []
@@ -66615,8 +66571,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! E:\laragon\www\7-stock-admin\vendor\xoshbin\laravel-inbox\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! E:\laragon\www\7-stock-admin\vendor\xoshbin\laravel-inbox\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\ali-shiwani\laragon\www\7-stock-admin-main\vendor\faisalazez\laravel-inbox\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\ali-shiwani\laragon\www\7-stock-admin-main\vendor\faisalazez\laravel-inbox\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

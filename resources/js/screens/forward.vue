@@ -78,12 +78,12 @@ export default {
   methods: {
     loadForward(id) {
       axios
-        .get(Inbox.basePath + "/api/forward/" + id)
+        .get("/inbox/api/forward/" + id)
         .then(({ data }) => this.fillForm(data.show));
     },
     sendForward() {
       // Submit the form via a POST request
-      this.form.post(Inbox.basePath + "/api/sendforward").then(({ data }) => {
+      this.form.post("/inbox/api/sendforward").then(({ data }) => {
         console.log(data);
         if(data.status){
           Swal.fire({
